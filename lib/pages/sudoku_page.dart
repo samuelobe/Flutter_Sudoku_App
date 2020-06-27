@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sudoku/widgets/tile.dart';
+
+import '../widgets/tile.dart';
 
 class SudokuPage extends StatefulWidget {
-  SudokuPage({Key key}) : super(key: key);
-
   @override
   _SudokuPageState createState() => _SudokuPageState();
 }
@@ -11,8 +10,8 @@ class SudokuPage extends StatefulWidget {
 class _SudokuPageState extends State<SudokuPage> {
   List<Widget> _getGrid() {
     var gridList = <Widget>[];
-    for (var i = 0; i < 81; i++) {
-      gridList.add(Tile());
+    for (double i = 0; i < 81; i++) {
+      gridList.add(Tile(index: i,));
     }
     return gridList;
   }
