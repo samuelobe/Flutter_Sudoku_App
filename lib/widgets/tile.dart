@@ -12,7 +12,7 @@ class Tile extends StatefulWidget {
 
 class _TileState extends State<Tile> {
   String text = "";
-  
+
   Border _getBorder() {
     var firstColRange = [2, 11, 20, 29, 38, 47, 56, 65, 74];
     var secondColRange = [5, 14, 23, 32, 41, 50, 59, 68, 77];
@@ -37,7 +37,6 @@ class _TileState extends State<Tile> {
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
       highlightColor: Colors.blue,
       onTap: () {

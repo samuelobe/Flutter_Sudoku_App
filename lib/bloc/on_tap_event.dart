@@ -13,13 +13,11 @@ class ButtonTappedEvent extends OnTapEvent {
 }
 
 class TileTappedEvent extends OnTapEvent {
-  
-  @override
-  List<Object> get props => [];
-}
+  final int xPos;
+  final int yPos;
 
-class BackgroundTappedEvent extends OnTapEvent {
-  
+  TileTappedEvent({this.xPos, this.yPos});
+
   @override
   List<Object> get props => [];
 }

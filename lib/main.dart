@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/on_tap_bloc.dart';
 import 'pages/settings_page.dart';
 import 'pages/sudoku_page.dart';
 
@@ -22,7 +24,10 @@ class _MyAppState extends State<MyApp> {
         icon: Icon(Icons.public), title: Text('Settings Page')),
   ];
 
-  final List<Widget> _pages = [SudokuPage(), SettingsPage()];
+  final List<Widget> _pages = [
+    BlocProvider(create: (context) => OnTapBloc(), child: SudokuPage()),
+    SettingsPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
