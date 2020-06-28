@@ -7,6 +7,7 @@ part 'on_tap_event.dart';
 part 'on_tap_state.dart';
 
 class OnTapBloc extends Bloc<OnTapEvent, OnTapState> {
+  int currentTappedIndex;
   @override
   OnTapState get initialState => OnTapInitial();
 
@@ -14,8 +15,11 @@ class OnTapBloc extends Bloc<OnTapEvent, OnTapState> {
   Stream<OnTapState> mapEventToState(
     OnTapEvent event,
   ) async* {
-    if (event is TileTappedEvent){
-      yield TappedState(index: event.index);
+    if (event is TileTappedEvent) {
+      currentTappedIndex = event.index;
+      yield TappedState(index: currentTappedIndex, value: "");
+    } else if (event is ButtonTappedEvent) {
+      yield TappedState(index: currentTappedIndex, value: event.value);
     }
   }
 }

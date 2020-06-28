@@ -5,15 +5,20 @@ abstract class OnTapState extends Equatable {
 }
 
 class OnTapInitial extends OnTapState {
-  final bool isTapped = false;
   @override
-  List<Object> get props => [isTapped];
+  List<Object> get props => [];
 }
 
 class TappedState extends OnTapState {
   final int index;
-  TappedState({this.index});
+  final String value;
+  TappedState({this.index, this.value});
 
   @override
-  List<Object> get props => [index];
+  List<Object> get props => [index, value];
+}
+
+class ButtonTappedState extends OnTapState {
+  @override
+  List<Object> get props => [];
 }

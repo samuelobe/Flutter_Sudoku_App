@@ -5,7 +5,7 @@ abstract class OnTapEvent extends Equatable {
 }
 
 class ButtonTappedEvent extends OnTapEvent {
-  final int value;
+  final String value;
   ButtonTappedEvent({this.value});
 
   @override

@@ -22,7 +22,7 @@ class _GridState extends State<Grid> {
         index: i,
         xPos: xPos,
         yPos: yPos,
-        selected: (i == selectedIndex) && (selectedIndex != null),
+        selected: i == selectedIndex,
       ));
     }
     return widgetList;
@@ -32,11 +32,11 @@ class _GridState extends State<Grid> {
   Widget build(BuildContext context) {
     return BlocBuilder<OnTapBloc, OnTapState>(
       builder: (context, state) {
-      var selectedIndex;
-      if (state is TappedState) {
-        selectedIndex = state.index;
-      }
-      
+        var selectedIndex;
+        if (state is TappedState) {
+          selectedIndex = state.index;
+        }
+
         var grid = _getGrid(selectedIndex);
         return Center(
           child: GridView(

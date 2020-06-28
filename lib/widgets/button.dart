@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/on_tap_bloc.dart';
 
 class Button extends StatefulWidget {
   final String number;
@@ -12,19 +15,17 @@ class Button extends StatefulWidget {
 class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        height: MediaQuery.of(context).size.height*0.08,
-        width: MediaQuery.of(context).size.height*0.045,
-        child: Center(
-          child: Text(
-            widget.number,
-            style: TextStyle(fontSize: 30),
-          ),
+    var bloc = context.bloc<OnTapBloc>();
+    return RaisedButton(
+      onPressed: () {
+        bloc.add(ButtonTappedEvent(value: widget.number));
+      },
+      child: Center(
+        child: Text(
+          widget.number,
+          style: TextStyle(fontSize: 30),
         ),
       ),
     );
   }
 }
-
-

@@ -43,6 +43,14 @@ class _TileState extends State<Tile> {
     var bloc = context.bloc<OnTapBloc>();
     return BlocBuilder<OnTapBloc, OnTapState>(
       builder: (context, state) {
+        if (widget.selected) {
+          if (state is TappedState) {
+            if (state.value != "") {
+              text = state.value;
+            }
+          }
+        }
+
         return InkWell(
           highlightColor: Colors.blue,
           onTap: () {
@@ -54,10 +62,15 @@ class _TileState extends State<Tile> {
           },
           child: GridTile(
               child: Container(
+                  child: Center(
+                      child: Text(
+                    text,
+                    style: TextStyle(fontSize: 30),
+                  )),
                   decoration: BoxDecoration(
-            border: _getBorder(),
-            color: widget.selected == true ? Colors.blue : Colors.white,
-          ))),
+                    border: _getBorder(),
+                    color: widget.selected == true ? Colors.blue : Colors.white,
+                  ))),
         );
       },
     );

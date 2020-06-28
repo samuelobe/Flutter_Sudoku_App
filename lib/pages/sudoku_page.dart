@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/buttons.dart';
+import '../widgets/first_row_buttons.dart';
 import '../widgets/grid.dart';
+import '../widgets/second_row_buttons.dart';
 
 class SudokuPage extends StatefulWidget {
   @override
@@ -18,9 +19,10 @@ class _SudokuPageState extends State<SudokuPage> {
           children: <Widget>[
             Grid(),
             SizedBox(
-              height: 50,
+              height: 10,
             ),
-            Buttons()
+            FirstRowButtons(),
+            SecondRowButtons(),
           ],
         ));
   }
