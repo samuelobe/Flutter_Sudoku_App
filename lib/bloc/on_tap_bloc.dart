@@ -15,7 +15,7 @@ class OnTapBloc extends Bloc<OnTapEvent, OnTapState> {
     OnTapEvent event,
   ) async* {
     if (event is TileTappedEvent){
-      print("${event.xPos}, ${event.yPos},");
+      yield TappedState(index: event.index);
     }
   }
 }

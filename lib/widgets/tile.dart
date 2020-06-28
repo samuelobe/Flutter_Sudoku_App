@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/on_tap_bloc.dart';
 
 class Tile extends StatefulWidget {
-  final double index;
+  final int index;
   final int xPos;
   final int yPos;
+  final bool selected;
 
-  Tile({this.index, this.xPos, this.yPos});
+  Tile({this.index, this.xPos, this.yPos, this.selected});
   @override
   _TileState createState() => _TileState();
 }
@@ -45,11 +46,18 @@ class _TileState extends State<Tile> {
         return InkWell(
           highlightColor: Colors.blue,
           onTap: () {
-            bloc.add(TileTappedEvent(xPos: widget.xPos, yPos: widget.yPos));
+            bloc.add(TileTappedEvent(
+              xPos: widget.xPos,
+              yPos: widget.yPos,
+              index: widget.index,
+            ));
           },
           child: GridTile(
-              child:
-                  Container(decoration: BoxDecoration(border: _getBorder()))),
+              child: Container(
+                  decoration: BoxDecoration(
+            border: _getBorder(),
+            color: widget.selected == true ? Colors.blue : Colors.white,
+          ))),
         );
       },
     );
