@@ -11,44 +11,36 @@ class Tile extends StatefulWidget {
 class _TileState extends State<Tile> {
   String text = "";
   Border _getBorder() {
-    var firstColRange = [2,11,20,29,38,47,56,65,74];
-    var secondColRange = [5,14,23,32,41,50,59,68,77];
+    var firstColRange = [2, 11, 20, 29, 38, 47, 56, 65, 74];
+    var secondColRange = [5, 14, 23, 32, 41, 50, 59, 68, 77];
     var index = widget.index;
-    double top = 1;
-    double bottom = 1;
-    double left = 1;
-    double right = 1;
+    var top = 1;
+    var bottom = 1;
+    var left = 1;
+    var right = 1;
     if ((index >= 18 && index <= 26) || index >= 45 && index <= 53) {
       bottom = 4;
     }
-    if (firstColRange.contains(index) || secondColRange.contains(index)){
+    if (firstColRange.contains(index) || secondColRange.contains(index)) {
       right = 4;
     }
 
     return Border(
-        top: BorderSide(width: top),
-        bottom: BorderSide(width: bottom),
-        left: BorderSide(width: left),
-        right: BorderSide(width: right));
+        top: BorderSide(width: top.toDouble()),
+        bottom: BorderSide(width: bottom.toDouble()),
+        left: BorderSide(width: left.toDouble()),
+        right: BorderSide(width: right.toDouble()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-        child: Container(
-            child: TextField(
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 25),
-              onSubmitted: (input) {
-                text = input;
-                print(text);
-              },
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                counterText: "",
-              ),
-              maxLength: 1,
-            ),
-            decoration: BoxDecoration(border: _getBorder())));
+    return InkWell(
+      highlightColor: Colors.blue,
+      onTap: () {
+        print("${widget.index ~/ 9},${widget.index % 9}");
+      },
+      child: GridTile(
+          child: Container(decoration: BoxDecoration(border: _getBorder()))),
+    );
   }
 }

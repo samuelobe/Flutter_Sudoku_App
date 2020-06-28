@@ -8,12 +8,16 @@ class SudokuPage extends StatefulWidget {
 }
 
 class _SudokuPageState extends State<SudokuPage> {
+  List<List<int>> gridList = [];
+
   List<Widget> _getGrid() {
-    var gridList = <Widget>[];
-    for (double i = 0; i < 81; i++) {
-      gridList.add(Tile(index: i,));
+    var widgetList = <Widget>[];
+    for (var i = 0; i < 81; i++) {
+      widgetList.add(Tile(
+        index: i.toDouble(),
+      ));
     }
-    return gridList;
+    return widgetList;
   }
 
   @override
@@ -21,15 +25,81 @@ class _SudokuPageState extends State<SudokuPage> {
     var grid = _getGrid();
     return Scaffold(
         appBar: AppBar(title: Text('Sudoku Page')),
-        body: Center(
-          child: GridView(
-            shrinkWrap: true,
-            //padding: EdgeInsets.only(top: 10),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 9,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: GridView(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 9,
+                ),
+                children: grid,
+              ),
             ),
-            children: grid,
-          ),
+            SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Card(
+                  child: Text(
+                    "1",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "2",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "3",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "4",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "5",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "6",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "7",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "8",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+                Card(
+                  child: Text(
+                    "9",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+              ],
+            )
+          ],
         ));
   }
 }
