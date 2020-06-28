@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/on_tap_bloc.dart';
 
 class Tile extends StatefulWidget {
   final double index;
@@ -37,13 +39,19 @@ class _TileState extends State<Tile> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      highlightColor: Colors.blue,
-      onTap: () {
-        print("${widget.xPos},${widget.yPos}");
+    var bloc = context.bloc<OnTapBloc>();
+    return BlocBuilder<OnTapBloc, OnTapState>(
+      builder: (context, state) {
+        return InkWell(
+          highlightColor: Colors.blue,
+          onTap: () {
+            bloc.add(TileTappedEvent(xPos: widget.xPos, yPos: widget.yPos));
+          },
+          child: GridTile(
+              child:
+                  Container(decoration: BoxDecoration(border: _getBorder()))),
+        );
       },
-      child: GridTile(
-          child: Container(decoration: BoxDecoration(border: _getBorder()))),
     );
   }
 }

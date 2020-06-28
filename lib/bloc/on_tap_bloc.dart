@@ -14,6 +14,8 @@ class OnTapBloc extends Bloc<OnTapEvent, OnTapState> {
   Stream<OnTapState> mapEventToState(
     OnTapEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is TileTappedEvent){
+      print("${event.xPos}, ${event.yPos},");
+    }
   }
 }
