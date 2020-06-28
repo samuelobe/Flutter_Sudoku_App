@@ -13,8 +13,12 @@ class _SudokuPageState extends State<SudokuPage> {
   List<Widget> _getGrid() {
     var widgetList = <Widget>[];
     for (var i = 0; i < 81; i++) {
+      var xPos = i ~/ 9;
+      var yPos = i % 9;
       widgetList.add(Tile(
         index: i.toDouble(),
+        xPos: xPos,
+        yPos: yPos,
       ));
     }
     return widgetList;

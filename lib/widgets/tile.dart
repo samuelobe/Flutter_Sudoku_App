@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 class Tile extends StatefulWidget {
   final double index;
+  final int xPos;
+  final int yPos;
 
-  Tile({this.index});
+  Tile({this.index, this.xPos, this.yPos});
   @override
   _TileState createState() => _TileState();
 }
 
 class _TileState extends State<Tile> {
   String text = "";
+  
   Border _getBorder() {
     var firstColRange = [2, 11, 20, 29, 38, 47, 56, 65, 74];
     var secondColRange = [5, 14, 23, 32, 41, 50, 59, 68, 77];
@@ -34,10 +37,11 @@ class _TileState extends State<Tile> {
 
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
       highlightColor: Colors.blue,
       onTap: () {
-        print("${widget.index ~/ 9},${widget.index % 9}");
+        print("${widget.xPos},${widget.yPos}");
       },
       child: GridTile(
           child: Container(decoration: BoxDecoration(border: _getBorder()))),
