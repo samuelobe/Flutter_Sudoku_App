@@ -13,13 +13,13 @@ class _SecondRowButtonsState extends State<SecondRowButtons> {
   @override
   Widget build(BuildContext context) {
     return ButtonBar(
-      alignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Button("6"),
-        Button("7"),
-        Button("8"),
-        Button("9"),
-      ],
-    );
+        alignment: MainAxisAlignment.center,
+        children: <Widget>[
+    Button("6"),
+    Button("7"),
+    Button("8"),
+    Button("9"),
+        ],
+      );
   }
 }

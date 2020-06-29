@@ -19,7 +19,7 @@ class _FirstRowButtonsState extends State<FirstRowButtons> {
         Button("2"),
         Button("3"),
         Button("4"),
-        Button("5"),
+        Button("5")
       ],
     );
   }

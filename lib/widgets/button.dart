@@ -16,14 +16,19 @@ class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
     var bloc = context.bloc<OnTapBloc>();
-    return RaisedButton(
-      onPressed: () {
+    return InkWell(
+      onTap: () {
         bloc.add(ButtonTappedEvent(value: widget.number));
       },
-      child: Center(
-        child: Text(
-          widget.number,
-          style: TextStyle(fontSize: 30),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width*0.15,
+        child: Card(
+          child: Center(
+            child: Text(
+              widget.number,
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
         ),
       ),
     );
