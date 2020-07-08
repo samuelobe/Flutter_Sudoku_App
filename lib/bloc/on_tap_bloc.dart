@@ -8,8 +8,7 @@ part 'on_tap_state.dart';
 
 class OnTapBloc extends Bloc<OnTapEvent, OnTapState> {
   int currentTappedIndex;
-  @override
-  OnTapState get initialState => OnTapInitial();
+  OnTapBloc() : super(OnTapInitial());
 
   @override
   Stream<OnTapState> mapEventToState(

@@ -6,15 +6,16 @@ class Tile extends StatefulWidget {
   final int index;
   final int xPos;
   final int yPos;
-  final bool selected;
 
-  Tile({this.index, this.xPos, this.yPos, this.selected});
+  Tile({this.index, this.xPos, this.yPos});
   @override
   _TileState createState() => _TileState();
 }
 
 class _TileState extends State<Tile> {
   String text = "";
+  bool selected = false;
+  int numTapped = 0;
 
   Border _getBorder() {
     var firstColRange = [2, 11, 20, 29, 38, 47, 56, 65, 74];
@@ -41,10 +42,14 @@ class _TileState extends State<Tile> {
   @override
   Widget build(BuildContext context) {
     var bloc = context.bloc<OnTapBloc>();
+
     return BlocBuilder<OnTapBloc, OnTapState>(
       builder: (context, state) {
-        if (widget.selected) {
-          if (state is TappedState) {
+        if (state is TappedState) {
+          if (state.index != widget.index) {
+            selected = false;
+          }
+          if (selected) {
             if (state.value != "") {
               text = state.value;
             }
@@ -54,6 +59,9 @@ class _TileState extends State<Tile> {
         return InkWell(
           highlightColor: Colors.blue,
           onTap: () {
+            numTapped++;
+            selected = true;
+
             bloc.add(TileTappedEvent(
               xPos: widget.xPos,
               yPos: widget.yPos,
@@ -69,7 +77,7 @@ class _TileState extends State<Tile> {
                   )),
                   decoration: BoxDecoration(
                     border: _getBorder(),
-                    color: widget.selected == true ? Colors.blue : Colors.white,
+                    color: selected == true ? Colors.blue : Colors.white,
                   ))),
         );
       },

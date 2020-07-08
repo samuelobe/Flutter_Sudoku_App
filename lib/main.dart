@@ -17,14 +17,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Sudoku App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: Scaffold(
-          body: BlocProvider(
-              create: (context) => OnTapBloc(), child: SudokuPage()),
-        ));
+      title: 'Sudoku App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: BlocProvider(create: (context) => OnTapBloc(), child: SudokuPage()),
+    );
   }
 }

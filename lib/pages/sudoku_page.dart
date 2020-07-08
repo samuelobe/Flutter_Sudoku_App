@@ -13,19 +13,18 @@ class _SudokuPageState extends State<SudokuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Sudoku Page')),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Grid(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
-              ),
-              FirstRowButtons(),
-              SecondRowButtons(),
-            ],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Grid(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
           ),
-        ));
+          FirstRowButtons(),
+          SecondRowButtons(),
+        ],
+      ),
+    ));
   }
 }

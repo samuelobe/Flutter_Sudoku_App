@@ -22,7 +22,6 @@ class _GridState extends State<Grid> {
         index: i,
         xPos: xPos,
         yPos: yPos,
-        selected: i == selectedIndex,
       ));
     }
     return widgetList;

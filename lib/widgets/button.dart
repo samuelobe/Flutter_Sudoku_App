@@ -21,7 +21,7 @@ class _ButtonState extends State<Button> {
         bloc.add(ButtonTappedEvent(value: widget.number));
       },
       child: SizedBox(
-        width: MediaQuery.of(context).size.width*0.15,
+        width: MediaQuery.of(context).size.width * 0.15,
         child: Card(
           child: Center(
             child: Text(
